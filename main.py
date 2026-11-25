@@ -26,6 +26,11 @@ def load_apps() -> list[dict[str, Any]]:
         return json.load(f)
 
 
+def save_apps(apps: list[dict[str, Any]]) -> None:
+    with open(APPS_FILE, "w", encoding="utf-8") as f:
+        json.dump(apps, f, ensure_ascii=False, indent=2)
+
+
 def find_app(app_id: str) -> dict[str, Any] | None:
     for item in load_apps():
         if item["id"] == app_id:
@@ -184,6 +189,62 @@ class LauncherHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         path = unquote(self.path.split("?", 1)[0])
+
+        if path == "/api/apps":
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                body = self.rfile.read(length).decode("utf-8")
+                data = json.loads(body)
+            except Exception:
+                self._send_json({"detail": "Payload JSON non valido"}, 400)
+                return
+
+            name = (data.get("name") or "").strip()
+            app_path = (data.get("path") or "").strip()
+            launch_target = (data.get("launch_target") or "").strip()
+            if not name or not app_path or not launch_target:
+                self._send_json({"detail": "Nome, percorso cartella e file di avvio sono obbligatori"}, 400)
+                return
+
+            import re
+            base_id = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_") or "app"
+            apps = load_apps()
+            existing_ids = {a["id"] for a in apps}
+            app_id = base_id
+            idx = 2
+            while app_id in existing_ids:
+                app_id = f"{base_id}_{idx}"
+                idx += 1
+
+            ext = Path(launch_target).suffix.lower()
+            launch_type = data.get("launch_type") or ("bat" if ext in (".bat", ".cmd") else "html" if ext in (".html", ".htm") else "exe")
+            category = (data.get("category") or "SOFTWARE").upper()
+            action_label = data.get("action_label") or ("APRI INDICE" if launch_type == "html" else "AVVIA")
+
+            exe_names = [Path(launch_target).name] if launch_type == "exe" else []
+            new_entry = {
+                "id": app_id,
+                "name": name,
+                "category": category,
+                "tag": (data.get("tag") or "CUSTOM").upper(),
+                "description": (data.get("description") or "").strip() or f"Collegamento a {name}.",
+                "path": app_path,
+                "launch_type": launch_type,
+                "launch_target": launch_target,
+                "action_label": action_label,
+                "process_match": {
+                    "exe_names": exe_names,
+                    "cmdline_contains": [Path(launch_target).stem] if launch_type == "bat" else [],
+                    "ports": [],
+                },
+                "instructions_files": ["ISTRUZIONI.md", "README.md", "read.md"],
+                "github_url": (data.get("github_url") or "").strip() or None,
+                "icon": data.get("icon") or "vinyl",
+            }
+            apps.append(new_entry)
+            save_apps(apps)
+            self._send_json(new_entry, 201)
+            return
 
         if path.startswith("/api/launch/"):
             app_id = path[len("/api/launch/"):]

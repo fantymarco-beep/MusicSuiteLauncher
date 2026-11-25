@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MUSIC SUITE — Launcher</title>
+  <link rel="icon" type="image/png" href="/ui/favicon.png">
   <link rel="stylesheet" href="/ui/style.css">
 </head>
 <body>
@@ -30,6 +31,7 @@
           <polyline points="21 3 21 9 15 9"></polyline>
         </svg>
       </button>
+      <button class="btn-add" id="add-app-btn" title="Aggiungi un nuovo software o raccolta">+ AGGIUNGI</button>
     </div>
 
     <div class="toolbar-right">
@@ -78,6 +80,72 @@
         </button>
       </div>
       <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Modale Aggiungi Software -->
+  <div id="add-modal-backdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card modal-card-sm">
+      <div class="modal-header">
+        <div>
+          <div class="modal-kicker">NUOVO COLLEGAMENTO</div>
+          <h2 class="modal-title">Aggiungi Software o Raccolta</h2>
+        </div>
+        <button id="add-modal-close" class="icon-btn" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <form id="add-app-form" class="modal-form">
+        <div class="form-row">
+          <label>Nome *
+            <input type="text" name="name" required placeholder="Es. Soulseek Qt">
+          </label>
+          <label>Categoria
+            <select name="category">
+              <option value="SOFTWARE">SOFTWARE</option>
+              <option value="CATALOGO">CATALOGO</option>
+              <option value="RACCOLTA">RACCOLTA</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Tag breve
+            <input type="text" name="tag" placeholder="Es. AUDIO / PLAYER" value="AUDIO">
+          </label>
+          <label>Icona
+            <select name="icon">
+              <option value="vinyl">Vinile / Player</option>
+              <option value="waveform">Onda sonora</option>
+              <option value="compass">Discovery / Bussola</option>
+              <option value="playlist">Playlist</option>
+              <option value="speaker">Hardware / Speaker</option>
+              <option value="usb">USB / Chiavetta</option>
+              <option value="books">Libri / Catalogo</option>
+              <option value="database">Database / Ricerca</option>
+              <option value="archive">Archivio / Raccolta</option>
+            </select>
+          </label>
+        </div>
+        <label>Percorso cartella *
+          <input type="text" name="path" required placeholder="Es. E:\MioNuovoSoftware">
+        </label>
+        <label>File di avvio (relativo alla cartella) *
+          <input type="text" name="launch_target" required placeholder="Es. avvia.bat oppure app.exe oppure index.html">
+        </label>
+        <label>Breve descrizione
+          <textarea name="description" rows="2" placeholder="A cosa serve questo software o raccolta..."></textarea>
+        </label>
+        <label>URL GitHub (opzionale)
+          <input type="url" name="github_url" placeholder="https://github.com/fantymarco-beep/...">
+        </label>
+        <div class="form-actions">
+          <button type="button" id="add-cancel-btn" class="icon-btn">Annulla</button>
+          <button type="submit" class="btn-launch">SALVA NEL LAUNCHER</button>
+        </div>
+      </form>
     </div>
   </div>
 

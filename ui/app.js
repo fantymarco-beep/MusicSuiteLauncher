@@ -247,7 +247,49 @@ modalBackdrop.addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") modalBackdrop.classList.add("hidden");
+  if (e.key === "Escape") {
+    modalBackdrop.classList.add("hidden");
+    addModalBackdrop.classList.add("hidden");
+  }
+});
+
+const addModalBackdrop = document.getElementById("add-modal-backdrop");
+const addAppForm = document.getElementById("add-app-form");
+
+document.getElementById("add-app-btn").addEventListener("click", () => {
+  addAppForm.reset();
+  addModalBackdrop.classList.remove("hidden");
+});
+
+document.getElementById("add-modal-close").addEventListener("click", () => {
+  addModalBackdrop.classList.add("hidden");
+});
+
+document.getElementById("add-cancel-btn").addEventListener("click", () => {
+  addModalBackdrop.classList.add("hidden");
+});
+
+addModalBackdrop.addEventListener("click", (e) => {
+  if (e.target === addModalBackdrop) addModalBackdrop.classList.add("hidden");
+});
+
+addAppForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const fd = new FormData(addAppForm);
+  const payload = Object.fromEntries(fd.entries());
+  const res = await fetch("/api/apps", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (res.ok) {
+    addModalBackdrop.classList.add("hidden");
+    showToast("Collegamento aggiunto al launcher");
+    await fetchApps();
+  } else {
+    const err = await res.json().catch(() => ({}));
+    showToast(err.detail || "Errore durante il salvataggio");
+  }
 });
 
 fetchApps();

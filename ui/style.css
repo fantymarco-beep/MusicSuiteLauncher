@@ -383,6 +383,85 @@ body {
   background: var(--surface-alt);
 }
 
+.btn-add {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #18181B;
+  border-radius: 4px;
+  background: #FFFFFF;
+  color: #18181B;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-add:hover {
+  background: #18181B;
+  color: #FFFFFF;
+}
+
+.modal-card-sm {
+  width: 560px;
+}
+
+.modal-form {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.modal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+  border-color: var(--border-strong);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.form-actions .btn-launch {
+  flex: 0 0 auto;
+  padding: 0 18px;
+}
+
 /* Status Bar */
 .statusbar {
   background: var(--surface);
