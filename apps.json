@@ -76,6 +76,25 @@
     "icon": "speaker"
   },
   {
+    "id": "curatore_playlist",
+    "name": "Curatore Playlist",
+    "category": "SOFTWARE",
+    "tag": "HUB",
+    "description": "Hub desktop per gestire il catalogo brani autoradio, approvare/scartare tracce, sincronizzare la chiavetta e importare dalla Tastiera Top 25.",
+    "path": "E:\\Software chiavetta",
+    "launch_type": "bat",
+    "launch_target": "avvia_curatore.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["app_curatela.py"],
+      "ports": []
+    },
+    "instructions_files": ["README.md", "ISTRUZIONI.md"],
+    "github_url": "https://github.com/fantymarco-beep/curatore-playlist-usb",
+    "icon": "playlist"
+  },
+  {
     "id": "curatore_playlist_usb",
     "name": "Curatore Playlist USB",
     "category": "SOFTWARE",
