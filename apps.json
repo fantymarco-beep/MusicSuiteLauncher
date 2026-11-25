@@ -1,0 +1,173 @@
+[
+  {
+    "id": "syncrodiscover",
+    "name": "SyncroDiscover",
+    "category": "SOFTWARE",
+    "tag": "DISCOVERY",
+    "description": "Motore di scoperta musicale collegato a MusicBrainz, Last.fm e ListenBrainz per trovare nuovi artisti e uscite.",
+    "path": "E:\\SyncroDiscover",
+    "launch_type": "bat",
+    "launch_target": "SyncroDiscover.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["SyncroDiscover.py"],
+      "ports": []
+    },
+    "instructions_files": ["README.md", "ISTRUZIONI.md"],
+    "github_url": "https://github.com/fantymarco-beep/SyncroDiscover",
+    "icon": "compass"
+  },
+  {
+    "id": "syncronicity",
+    "name": "Syncronicity",
+    "category": "SOFTWARE",
+    "tag": "LIBRERIA",
+    "description": "Gestione, analisi e sincronizzazione della libreria musicale locale con anteprime e backup degli interventi.",
+    "path": "E:\\Syncronicity v. 31072026\\Syncronicity",
+    "launch_type": "bat",
+    "launch_target": "Syncronicity.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["Syncronicity.py"],
+      "ports": []
+    },
+    "instructions_files": ["AVVIO.md", "README.md"],
+    "github_url": "https://github.com/fantymarco-beep/Syncronicity",
+    "icon": "waveform"
+  },
+  {
+    "id": "music_playlist_manager",
+    "name": "Music Playlist Manager",
+    "category": "SOFTWARE",
+    "tag": "PLAYLIST",
+    "description": "Applicazione desktop per creare, organizzare ed esportare playlist musicali con database locale dedicato.",
+    "path": "E:\\playlist_builder\\MusicPlaylistManager",
+    "launch_type": "bat",
+    "launch_target": "run.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["MusicPlaylistManager"],
+      "ports": []
+    },
+    "instructions_files": ["README.md"],
+    "github_url": "https://github.com/fantymarco-beep/MusicPlaylistManager",
+    "icon": "playlist"
+  },
+  {
+    "id": "onkyo_sub_controller",
+    "name": "Onkyo Sub Controller",
+    "category": "SOFTWARE",
+    "tag": "HARDWARE",
+    "description": "Utility dedicata al controllo del subwoofer Onkyo e alla gestione keep-alive audio tramite SoundKeeper.",
+    "path": "E:\\Onkyo_Sub_Controller",
+    "launch_type": "exe",
+    "launch_target": "dist\\OnkyoSubController.exe",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": ["OnkyoSubController.exe"],
+      "cmdline_contains": ["Onkyo_Sub_Controller"],
+      "ports": []
+    },
+    "instructions_files": ["read.md", "README.md"],
+    "github_url": "https://github.com/fantymarco-beep/Onkyo_Sub_Controller",
+    "icon": "speaker"
+  },
+  {
+    "id": "curatore_playlist_usb",
+    "name": "Curatore Playlist USB",
+    "category": "SOFTWARE",
+    "tag": "CHIAVETTA",
+    "description": "Jukebox e suite di script Python per curare i brani della chiavetta USB, verificare i duplicati e generare playlist.",
+    "path": "E:\\Software chiavetta",
+    "launch_type": "html",
+    "launch_target": "ascolto_lista_spesa.html",
+    "action_label": "APRI JUKEBOX",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["curatela_usb.py", "genera_playlist_ascolto.py"],
+      "ports": []
+    },
+    "instructions_files": ["ISTRUZIONI.md", "README.md"],
+    "github_url": "https://github.com/fantymarco-beep/curatore-playlist-usb",
+    "icon": "usb"
+  },
+  {
+    "id": "foobar2000",
+    "name": "foobar2000 Portable",
+    "category": "SOFTWARE",
+    "tag": "PLAYER",
+    "description": "Player audio hi-fi portatile configurato con componenti, temi, skin e librerie musicali personalizzate.",
+    "path": "E:\\programmi\\foobar2000",
+    "launch_type": "exe",
+    "launch_target": "foobar2000.exe",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": ["foobar2000.exe"],
+      "cmdline_contains": [],
+      "ports": []
+    },
+    "instructions_files": ["ISTRUZIONI.md"],
+    "github_url": null,
+    "icon": "vinyl"
+  },
+  {
+    "id": "libri_musica",
+    "name": "Libri Musica",
+    "category": "CATALOGO",
+    "tag": "WEB APP",
+    "description": "Catalogo locale e tracker Gemini NotebookLM per organizzare e consultare libri, riviste ed enciclopedie musicali.",
+    "path": "E:\\Libri Musica",
+    "launch_type": "bat",
+    "launch_target": "avvia_catalogo.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["Libri Musica", "server.py"],
+      "ports": [5055]
+    },
+    "instructions_files": ["ISTRUZIONI.md"],
+    "github_url": "https://github.com/fantymarco-beep/Libri-Musica-Catalogo",
+    "icon": "books"
+  },
+  {
+    "id": "elenchi_musica",
+    "name": "Elenchi Musica",
+    "category": "CATALOGO",
+    "tag": "RICERCA",
+    "description": "Motore di ricerca locale su database SQLite per consultare classifiche, dataset Excel e dossier per NotebookLM.",
+    "path": "E:\\Elenchi musica",
+    "launch_type": "bat",
+    "launch_target": "Avvia_Ricerca_Musica.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["app_ricerca.py"],
+      "ports": []
+    },
+    "instructions_files": ["ISTRUZIONI.md"],
+    "github_url": "https://github.com/fantymarco-beep/Elenchi-Musica-Ricerca",
+    "icon": "database"
+  },
+  {
+    "id": "pietre_miliari",
+    "name": "Pietre Miliari",
+    "category": "RACCOLTA",
+    "tag": "ARCHIVIO",
+    "description": "Raccolta navigabile di monografie, classifiche e retrospettive musicali (OndaRock, Scaruffi, Back In Time).",
+    "path": "E:\\Pietre miliari",
+    "launch_type": "html",
+    "launch_target": "index.html",
+    "action_label": "APRI INDICE",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": [],
+      "ports": []
+    },
+    "instructions_files": ["ISTRUZIONI.md"],
+    "github_url": null,
+    "icon": "archive"
+  }
+]

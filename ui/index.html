@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSIC SUITE — Launcher</title>
+  <link rel="stylesheet" href="/ui/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-title">MUSIC SUITE</span>
+      <span class="brand-sub">AUDIO &amp; ARCHIVE LAUNCHER</span>
+    </div>
+    <div class="topbar-status" id="active-summary">0 attivi</div>
+  </header>
+
+  <nav class="toolbar">
+    <div class="toolbar-left">
+      <div class="tabs" id="filter-tabs">
+        <button class="tab active" data-filter="ALL">TUTTI</button>
+        <button class="tab" data-filter="SOFTWARE">SOFTWARE</button>
+        <button class="tab" data-filter="CATALOGO">CATALOGHI</button>
+        <button class="tab" data-filter="RACCOLTA">RACCOLTE</button>
+        <button class="tab" data-filter="ACTIVE">ATTIVI</button>
+      </div>
+      <button class="icon-btn" id="refresh-btn" title="Aggiorna stato processi" aria-label="Aggiorna">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+          <polyline points="21 3 21 9 15 9"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="toolbar-right">
+      <label class="sort-label" for="sort-select">ORDINA</label>
+      <select id="sort-select" class="select-input">
+        <option value="name">Nome (A-Z)</option>
+        <option value="category">Categoria</option>
+        <option value="active">Attivi prima</option>
+      </select>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search-input" type="search" placeholder="Cerca software o raccolta...">
+      </div>
+    </div>
+  </nav>
+
+  <main class="grid-container">
+    <div id="apps-grid" class="apps-grid"></div>
+    <div id="empty-state" class="empty-state hidden">
+      Nessun elemento corrisponde ai filtri selezionati.
+    </div>
+  </main>
+
+  <footer class="statusbar">
+    <span id="status-text">PRONTO · TUTTE LE CARTELLE ORIGINALI SU E:\ INVARIATE</span>
+    <span>MUSIC SUITE LAUNCHER</span>
+  </footer>
+
+  <!-- Modale Istruzioni -->
+  <div id="modal-backdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-kicker">ISTRUZIONI &amp; DOCUMENTAZIONE</div>
+          <h2 id="modal-title" class="modal-title">Titolo</h2>
+          <div id="modal-filepath" class="modal-filepath"></div>
+        </div>
+        <button id="modal-close" class="icon-btn" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/ui/app.js"></script>
+</body>
+</html>
