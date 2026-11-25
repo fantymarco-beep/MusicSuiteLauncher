@@ -95,6 +95,25 @@
     "icon": "playlist"
   },
   {
+    "id": "tastiera_pulizia_mp3",
+    "name": "Tastiera Pulizia MP3",
+    "category": "SOFTWARE",
+    "tag": "PULIZIA",
+    "description": "Tastiera interattiva divisa per categorie per ascoltare, scartare doppioni/live/remix/featuring e rinominare i file MP3 della chiavetta.",
+    "path": "E:\\Software chiavetta",
+    "launch_type": "bat",
+    "launch_target": "avvia_tastiera_pulizia.bat",
+    "action_label": "AVVIA",
+    "process_match": {
+      "exe_names": [],
+      "cmdline_contains": ["tastiera_pulizia_mp3.py"],
+      "ports": []
+    },
+    "instructions_files": ["ISTRUZIONI.md", "README.md"],
+    "github_url": "https://github.com/fantymarco-beep/curatore-playlist-usb",
+    "icon": "waveform"
+  },
+  {
     "id": "curatore_playlist_usb",
     "name": "Curatore Playlist USB",
     "category": "SOFTWARE",
